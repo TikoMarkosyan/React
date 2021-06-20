@@ -1,0 +1,69 @@
+.main_list_div{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50vw;
+    border-right: 1px solid black;
+}
+.button_toggle_add{
+    text-align: right; 
+}
+
+.list_main_div_for_item{
+    display: flex;
+    flex-direction: column;
+}
+.posts_list_block{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    border-top: 1px solid black;
+    margin-bottom: 12px;
+  }
+  
+.post_id_block{
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.post_block_list{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .button {
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 90px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: red;
+  }
+.remove_button{
+    text-align: center;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
+.add_sort_button {
+    border: none;
+    color: white;
+    padding: 11px 27px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    margin: 4px 2px;
+    background-color: #1ccadc;
+    cursor: pointer;
+  }
+  
