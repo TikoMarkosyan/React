@@ -19,6 +19,7 @@ class App extends Component {
 
       super(props);
       this.state = {
+        
         posts:[],
         showPosts:[],
         comment:[],
@@ -33,6 +34,7 @@ class App extends Component {
         name:[],
         commentText:[],
         error:false,
+        
       }
 
   }
