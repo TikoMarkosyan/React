@@ -1,12 +1,6 @@
 
 import { Component } from 'react';
 
-import Rating from '@material-ui/lab/Rating';
-import Button from '@material-ui/core/Button';
-import Alert from '@material-ui/lab/Alert';
-
-import { sortBy } from 'lodash';
-import ReactPaginate from 'react-paginate';
 
 import Posts from "../Posts"
 import './App.css';
@@ -41,6 +35,7 @@ class App extends Component {
           }
 
           const propertiesListThatNeeded = {
+            
             rating:0,
             replase:false,
 
@@ -90,7 +85,6 @@ class App extends Component {
         }
        
     })
-    console.log(data)
 
     this.setState({
       posts:newPosts
