@@ -1,109 +1,155 @@
 .App {
+  
   text-align: center;
+  
 }
 .main_block {
+  
   display:flex;
   flex-direction: column;
   height: auto;
   align-items: center;
   justify-content: center;
+  
 }
-.posts_comments_block{
+
+.posts_comments_block {
+  
   border: 1px solid black;
   width: 50vw;
   flex-direction: row;
   margin-bottom:12px;
+  
 }
 
-.post_block{
+.post_block {
+  
   width: auto;
   border: 1px solid black;
+  
 }
 
-.post_title{
+.post_title {
+  
   text-align: center;
   font-family: monospace;
   font-weight: bold;
   font-size: medium;
    
 }
-.post_body_title{
+
+.post_body_title {
+  
   text-align: center;
   font-family: monospace;
   font-weight: bold;
+  
 }
-.post_body{
+.post_body {
+  
   text-align: left;
   font-family: monospace;
+  
 }
-.comment_block{
+
+.comment_block {
+  
   border-top: 1px solid black;
   display: flex;
   flex-direction: row;
   float: right;
   width: 91%;
-}
-.text_side{
-  width: 61%;
-  text-align: left;
+
 }
 
+.text_side {
+  
+  width: 61%;
+  text-align: left;
+
+}
+
+<<<<<<< HEAD:src/components/App/App.css
 .rating_side{
   width: 32%;
+=======
+.rating_side {
+  
+  width: 21%;
+>>>>>>> f32fbd2b1b2be2cab571317fbb0138913bfedc45:src/App.css
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
 }
 
-.posts_id_side_block_row{
+.posts_id_side_block_row {
+  
   display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin-bottom: 9px;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 9px;
+
 }
 
-.post_id_block{
-    width: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.post_id_block {
+  
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
-.disable{
+.disable {
+  
   background-color: gray;
   opacity: 0.5;
+
 }
 
 .pagination {
+  
   display: flex;
   justify-content: space-between;
   list-style: none;
   cursor: pointer;
   margin-bottom: 30px;
+  
 }
 
 .pagination a {
+  
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #6c7ac9;
   color: #6c7ac9;
+  
 }
 
 .pagination__link {
+  
   font-weight: bold;
+  
 }
 
 .pagination__link--active a {
+  
   color: #fff;
   background: #6c7ac9;
+  
 }
 
 .pagination__link--disabled a {
+  
   color: rgb(198, 197, 202);
   border: 1px solid rgb(198, 197, 202);
+  
 }
-.list_main_block{
+
+.list_main_block {
+  
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -111,17 +157,28 @@
   width: 90vw;
   border: 1px solid black;
   margin-bottom: 50px;
+  
 }
-.add_comment{
+
+.add_comment {
+  
   display: flex;
   width: 40%;
   justify-content: center;
   flex-direction: column;
   margin: 0 auto;
   padding-bottom: 10px;
+  
 }
+<<<<<<< HEAD:src/components/App/App.css
 .input_text{
   border: 1px solid #e1e1e1;
+=======
+
+.input_text {
+  
+  border: 1px solid #3f51b5;
+>>>>>>> f32fbd2b1b2be2cab571317fbb0138913bfedc45:src/App.css
   color: black;
   margin-bottom: 3px;
 
