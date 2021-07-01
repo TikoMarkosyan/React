@@ -69,14 +69,9 @@
 
 }
 
-<<<<<<< HEAD:src/components/App/App.css
-.rating_side{
-  width: 32%;
-=======
 .rating_side {
   
   width: 21%;
->>>>>>> f32fbd2b1b2be2cab571317fbb0138913bfedc45:src/App.css
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -170,15 +165,10 @@
   padding-bottom: 10px;
   
 }
-<<<<<<< HEAD:src/components/App/App.css
-.input_text{
-  border: 1px solid #e1e1e1;
-=======
 
 .input_text {
   
   border: 1px solid #3f51b5;
->>>>>>> f32fbd2b1b2be2cab571317fbb0138913bfedc45:src/App.css
   color: black;
   margin-bottom: 3px;
 

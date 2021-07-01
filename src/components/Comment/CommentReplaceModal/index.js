@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Modal from 'react-modal';
@@ -12,12 +12,10 @@ class CommentReplaceModal extends Component {
         super(props)
 
         this.state = {
-
             name:"",
             email:"",
             body:"",
             showModal:false,
-
         }
     }
 
@@ -31,11 +29,9 @@ class CommentReplaceModal extends Component {
     }
 
     handleChange= (value,witchInput) => {
-            console.log(value)
-        this.setState({
-          ...this.state,
-          [witchInput]: value,
 
+        this.setState({
+          [witchInput]: value,
         });
 
     }
@@ -43,21 +39,17 @@ class CommentReplaceModal extends Component {
     handleToggleModal = () => {
 
         this.setState({
-            ...this.state,
             showModal:!this.state.showModal
         })
 
     }
     replace = (email,body,name) => {
-
         const { data } = this.props;
-        console.log(email);
-        console.log(body);
-        console.log(name);
+      
         if(name === "" || !this.isValidEmail(email) || body === ""  || data.replase === true) {
             return false;
         }
-        console.log("fff");
+  
         const newdata = {
             ...data,
             email,
@@ -71,11 +63,13 @@ class CommentReplaceModal extends Component {
     }
 
     render() {
+
         const { name, email,body } = this.state;
         const { data } = this.props;
+
         return (
             <>
-                <button onClick={()=> { this.handleToggleModal() }} className={"button"} disabled={data.replase}> Rep </button>
+                <button onClick={ this.handleToggleModal } className={"button"} disabled={data.replase}> Rep </button>
                 <Modal 
                     isOpen={this.state.showModal}
                     contentLabel="onRequestClose Example"
@@ -85,19 +79,31 @@ class CommentReplaceModal extends Component {
                     >
 
                     <div className="add_comment">
-                            <input type="email" className="input_text input_width" placeholder="Write your email"     onChange={(e) => {  this.handleChange(e.target.value,"email") } }/>
+                            <input type="email" 
+                                className="input_text input_width" 
+                                placeholder="Write your email"     
+                                onChange={(e) =>  this.handleChange(e.target.value,"email") } 
+                            />
                             <InputEmoji
-                                
                                     onChange={(e) => { this.handleChange(e,"body") } }
                                     cleanOnEnter
                                     placeholder="Type a message"
                             />
                         
-                            <input type="text"   className="input_text input_width input_margin_bottom" placeholder="Write name"   onChange={(e) => { this.handleChange(e.target.value,"name") } }/>
-                            <Button variant="outlined" color="primary" onClick={()=> { this.replace(email, body, name)} } >
-                                Add Comment
+                            <input type="text"   
+                                className="input_text input_width input_margin_bottom"
+                                placeholder="Write name"  
+                                onChange={(e) =>  this.handleChange(e.target.value,"name") }
+                              />
+
+                            <Button 
+                                variant="outlined" 
+                                color="primary" 
+                                onClick={()=>  this.replace(email, body, name) } >
+                                    Add Comment
                             </Button> 
                     </div>
+                    
                 </Modal>
             </>
          )

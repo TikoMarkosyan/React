@@ -10,16 +10,15 @@ import List from "../List";
 import Search from "../Search";
 
 class Posts extends Component {
+    
     constructor(props){
-        super(props)
-        this.state={
+        super(props);
 
-            totalPages:10,
+        this.state={
             postsPerPage:10,
             currentPage:0,
-            showPosts: this.props.data.slice(0, 10),
-            
-        }
+            showPosts: this.props.data.slice(0, 10),       
+        };
     }
 
     
@@ -33,12 +32,14 @@ class Posts extends Component {
     }
 
     addComment = ( index, email = "", body = "", title = "" ) => {
+
         const { data, addPostsComment } = this.props;
         const newData = [...data];
 
         if(title === "" || !this.isValidEmail(email) || body === "") {
             return false;
         }
+
         const newComment = {
             body:body,
             email:email,
@@ -46,47 +47,50 @@ class Posts extends Component {
             postId:index,
             rating:0, 
             id: data[data.length-1].comments[data[data.length-1].comments.length-1].id+1 
-        }
+        };
        
         newData[index-1].comments.push(newComment);     
         addPostsComment(newData);
+
     }
 
     handlePageClick = ({ selected }) => {
-        const { postsPerPage } = this.state
+        const { postsPerPage } = this.state;
         
-        const totalPages = Math.ceil(this.props.data.length / postsPerPage);
-
         const indexOfFirstPost = (selected) * postsPerPage;
         const indexOfLastPost = indexOfFirstPost + postsPerPage;
-        console.log(selected+ "sleel")
-        console.log(indexOfFirstPost + " First")
-        console.log(indexOfLastPost+ " last")
+
         const show =  this.props.data.slice(indexOfFirstPost, indexOfLastPost);
     
         this.setState({
-    
           ...this.state,
           showPosts:show,
-          totalPages:totalPages,
           currentPage:selected
-    
-        })
+        });
     
       }
+
+    totalPageCount = () => {
+        const { postsPerPage } = this.state;
+        return Math.ceil(this.props.data.length / postsPerPage);
+    }
+
     changePageShowCount = (e) => {
+
         const { currentPage } = this.state;
+
         this.setState({
-            ...this.state,
             postsPerPage: +e.target.getAttribute("data-value")
         },()=>{
             this.handlePageClick({selected:currentPage})
-        })
+        });
     }
-    render(){
+    render() {
+
         const { showPosts,postsPerPage } = this.state;
         const { data,addPostsComment } = this.props
         const list = ["list1","list2"];
+
         return (
             <div className="main_block">
                 <Search  data={data} />
@@ -105,8 +109,13 @@ class Posts extends Component {
                                                 <p className="post_body">{item.body}</p>
                                             </div>
                                     </div>
-                            <Comment  data={item.comments} method={this.props.method} addComment={this.addComment} disableRating={item.disable} index={item.id}/>
-                         
+                                    <Comment 
+                                        data={item.comments} 
+                                        method={this.props.method} 
+                                        addComment={this.addComment} 
+                                        disableRating={item.disable} 
+                                        index={item.id}
+                                    />
                             </div>
                        )
                    }) 
@@ -116,7 +125,7 @@ class Posts extends Component {
                     nextLabel={" → "}
                     breakLabel={'...'}
                     breakClassName={'break-me'}
-                    pageCount={this.state.totalPages}
+                    pageCount={this.totalPageCount}
                     onPageChange={this.handlePageClick}
                     containerClassName={"pagination"}
                     previousLinkClassName={"pagination__link"}
@@ -125,15 +134,15 @@ class Posts extends Component {
                     activeClassName={"pagination__link--active"}
                 />
                 <InputLabel id="label">Page</InputLabel>
-                <Select labelId="label" id="select" value={postsPerPage}>
-                    <MenuItem value="10" onClick={(e) => { this.changePageShowCount(e) }}>10</MenuItem>
-                    <MenuItem value="5"  onClick={(e) => { this.changePageShowCount(e) }}>5</MenuItem>
+                <Select labelId="label" id="select" value={postsPerPage} onChange={(e) =>  this.changePageShowCount(e) }>
+                    <MenuItem value="10">10</MenuItem>
+                    <MenuItem value="5">5</MenuItem>
                 </Select>
                 <div className="list_main_block">
-                    { list.map((el, index ) => {
+                    { list.map( el => {
                             return <List title={el} data={data} addPostsComment={addPostsComment} key={`${ el }`} /> 
                         })
-                        }
+                     }
                 </div>
      </div>
          )

@@ -3,7 +3,9 @@ import { Component } from 'react';
 
 
 import Posts from "../Posts"
+
 import './App.css';
+
 
 
 class App extends Component {
@@ -19,7 +21,10 @@ class App extends Component {
 
   componentDidMount() {
 
-    Promise.all([ fetch("https://jsonplaceholder.typicode.com/posts"), fetch("https://jsonplaceholder.typicode.com/comments")])
+    const urlPosts = "https://jsonplaceholder.typicode.com/posts";
+    const commentsPost = "https://jsonplaceholder.typicode.com/comments";
+
+    Promise.all([ fetch(urlPosts), fetch(commentsPost)])
     .then( ( responses ) => {
           return Promise.all(responses.map(function (response) {
             return response.json();
@@ -28,21 +33,16 @@ class App extends Component {
     .then(( [ posts, allComments ] ) => {
 
           const propertiesPropsThatNeeded = {
-
             averageRating:0,
             disable:false,
-            
           }
 
           const propertiesListThatNeeded = {
-            
             rating:0,
             replase:false,
-
           }
 
           const finalPostView = posts.map((el,index) => {
-
             const Comments = allComments.filter(item => item.postId === el.id);
             const postComments = Comments.map(item => { return {
               ...item,
@@ -50,11 +50,11 @@ class App extends Component {
             } 
             });
 
-          return ({
-              ...el,
-              ...propertiesPropsThatNeeded,
-              comments: postComments
-            })
+            return ({
+                ...el,
+                ...propertiesPropsThatNeeded,
+                comments: postComments     
+              })
           })
           
           this.setState({
@@ -65,11 +65,9 @@ class App extends Component {
   }
 
   addPostsComment = (data) => {
-
       this.setState({
         posts: [...data]
       });
-      
   }
 
   changePostsComment = (data) => {
@@ -77,26 +75,26 @@ class App extends Component {
     const newPosts = [...posts];
 
     newPosts[data.postId-1].comments.forEach((element, index) => {
-
         if(element.id === data.id) {
-        
           newPosts[data.postId-1].comments[index] = data;
-
-        }
-       
-    })
+        } 
+    });
 
     this.setState({
       posts:newPosts
-    }) 
+    });
+
   }
   
   render() {
-      const { posts } = this.state
+    const { posts } = this.state
 
     return (
       <>
-       { posts.length !== 0 ? <Posts data={posts} addPostsComment={this.addPostsComment}  method={this.changePostsComment}/> : null
+       {  ( posts.length !== 0 ) &&
+        <Posts data={posts} 
+               addPostsComment={this.addPostsComment} 
+               method={this.changePostsComment}/> 
        }
       </>
 
